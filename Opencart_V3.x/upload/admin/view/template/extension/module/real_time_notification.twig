@@ -1,0 +1,155 @@
+{{ header }}{{ column_left }}
+<div id="content">
+	<div class="page-header">
+		<div class="container-fluid">
+			<div class="pull-right">
+				<button type="submit" form="form-real-time-notification" data-toggle="tooltip" title="{{ button_save }}" class="btn btn-primary"><i class="fa fa-save"></i></button>
+				<a href="{{ cancel }}" data-toggle="tooltip" title="{{ button_cancel }}" class="btn btn-default"><i class="fa fa-reply"></i></a></div>
+			<h1>{{ heading_title }}</h1>
+			<ul class="breadcrumb">
+				{% for breadcrumb in breadcrumbs %}
+				<li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+				{% endfor %}
+			</ul>
+		</div>
+	</div>
+	<div class="container-fluid">
+		{% if error_warning %}
+		<div class="alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i> {{ error_warning }}
+			<button type="button" class="close" data-dismiss="alert">&times;</button>
+		</div>
+		{% endif %}
+		{% if success %}
+		<div class="alert alert-success alert-dismissible"><i class="fa fa-check-circle"></i> {{ success }} <button type="button" class="close" data-dismiss="alert">&times;</button></div>
+		{% endif %}
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title"><i class="fa fa-pencil"></i> {{ text_edit }}</h3>
+			</div>
+			<div class="panel-body">
+				<form action="{{ action }}" method="post" enctype="multipart/form-data" id="form-real-time-notification" class="form-horizontal">
+					<div class="form-group">
+						<label class="col-sm-2 control-label" for="input-position">
+							<span data-toggle="tooltip" title="{{ help_position }}">{{ entry_position }}</span>
+						</label>
+						<div class="col-sm-8">
+							<div class="col-sm-10 notification-position" data-toggle="buttons">
+								<button class="btn btn-orange col-sm-4 {% if module_real_time_notification_position == 'top-left' %}active{% endif %}" title="{{ text_top_left }}">
+									<input type="radio" name="module_real_time_notification_position" autocomplete="off" value="top-left" {% if module_real_time_notification_position == 'top-left'%}checked{% endif %}/>
+									<span class="icon-arrow-up-left">
+										<i class="fa fa-arrow-up"></i>
+									</span>
+								</button>
+								<button class="btn btn-orange col-sm-4 {% if module_real_time_notification_position == 'top-center' %}active{% endif %}" title="{{ text_top_center }}">
+									<input type="radio" name="module_real_time_notification_position" autocomplete="off" value="top-center"  {% if module_real_time_notification_position == 'top-center'%}checked{% endif %}/>
+									<span class="icon-arrow-up">
+										<i class="fa fa-arrow-up"></i>
+									</span>
+								</button>
+								<button class="btn btn-orange col-sm-4 {% if module_real_time_notification_position == 'top-right' %}active{% endif %}" title="{{ text_top_right }}">
+									<input type="radio" name="module_real_time_notification_position" autocomplete="off" value="top-right"  {% if module_real_time_notification_position == 'top-right'%}checked{% endif %} />
+									<span class="icon-arrow-up-right">
+										<i class="fa fa-arrow-up"></i>
+									</span>
+								</button>
+								<button class="btn btn-orange col-sm-4 {% if module_real_time_notification_position == 'bottom-left' %}active{% endif %}" title="{{ text_bottom_left }}">
+									<input type="radio" name="module_real_time_notification_position" autocomplete="off" value="bottom-left"  {% if module_real_time_notification_position == 'bottom-left'%}checked{% endif %}/>
+									<span class="icon-arrow-down-left">
+										<i class="fa fa-arrow-down"></i>
+									</span>
+								</button>
+								<button class="btn btn-orange col-sm-4 {% if module_real_time_notification_position == 'bottom-center' %}active{% endif %}" title="{{ text_bottom_center }}">
+									<input type="radio" name="module_real_time_notification_position" autocomplete="off" value="bottom-center"  {% if module_real_time_notification_position == 'bottom-center'%}checked{% endif %}/>
+									<span class="icon-arrow-down">
+										<i class="fa fa-arrow-down"></i>
+									</span>
+								</button>
+								<button class="btn btn-orange col-sm-4 {% if module_real_time_notification_position == 'bottom-right' %}active{% endif %}" title="{{ text_bottom_right }}">
+									<input type="radio" name="module_real_time_notification_position" autocomplete="off" value="bottom-right"  {% if module_real_time_notification_position == 'bottom-right'%}checked{% endif %}/>
+									<span class="icon-arrow-down-right">
+										<i class="fa fa-arrow-down"></i>
+									</span>
+								</button>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label" for="input-allow-dismiss">
+							<span data-toggle="tooltip" title="{{ help_allow_dismiss }}">{{ entry_allow_dismiss }}</span>
+						</label>
+						<div class="col-sm-10">
+							<input type="checkbox" value="1" name="module_real_time_notification_allow_dismiss" data-toggle="toggle" data-on="{{ text_enabled }}" data-off="{{ text_disabled }}" {% if module_real_time_notification_allow_dismiss %}checked{% endif %}>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label" for="input-pause-on-hover">
+							<span data-toggle="tooltip" title="{{ help_pause_on_hover }}">{{ entry_pause_on_hover }}</span>
+						</label>
+						<div class="col-sm-10">
+							<input type="checkbox" value="1" name="module_real_time_notification_pause_on_hover" data-toggle="toggle" data-on="{{ text_enabled }}" data-off="{{ text_disabled }}" {% if module_real_time_notification_pause_on_hover %}checked{% endif %}>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label" for="input-pause-on-hover">
+							<span data-toggle="tooltip" title="{{ help_delay }}">{{ entry_delay }}</span>
+						</label>
+						<div class="col-sm-2">
+							<input type="number" class="form-control" name="module_real_time_notification_delay" value="{{ module_real_time_notification_delay}}">
+							{% if error_delay %}
+							<div class="text-danger">{{ error_delay }}</div>
+							{% endif %}
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label" for="input-newest-on-top">
+							<span data-toggle="tooltip" title="{{ help_newest_on_top }}">{{ entry_newest_on_top }}</span>
+						</label>
+						<div class="col-sm-10">
+							<input type="checkbox" value="1" name="module_real_time_notification_newest_on_top" data-toggle="toggle" data-on="{{ text_enabled }}" data-off="{{ text_disabled }}" {% if module_real_time_notification_newest_on_top %}checked{% endif %}>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label" for="input-progress-bar">
+							<span data-toggle="tooltip" title="{{ help_progress_bar }}">{{ entry_progress_bar }}</span>
+						</label>
+						<div class="col-sm-10">
+							<input type="checkbox" value="1" name="module_real_time_notification_progress_bar" data-toggle="toggle" data-on="{{ text_enabled }}" data-off="{{ text_disabled }}" {% if module_real_time_notification_progress_bar %}checked{% endif %}>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label" for="input-order-status"><span data-toggle="tooltip" title="{{ help_order_status }}">{{ entry_order_status }}</span></label>
+						<div class="col-sm-10">
+							<div class="well well-sm" style="height: 150px; overflow: auto;">
+								{% for order_status in order_statuses %}
+								<div class="checkbox">
+								<label>
+									{% if order_status.order_status_id in module_real_time_notification_order_status %}
+										<input type="checkbox" name="module_real_time_notification_order_status[]" value="{{ order_status.order_status_id }}" checked="checked" />
+										{{ order_status.name }}
+									{% else %}
+										<input type="checkbox" name="module_real_time_notification_order_status[]" value="{{ order_status.order_status_id }}" />
+										{{ order_status.name }}
+									{% endif %}
+								</label>
+						  		</div>
+								{% endfor %}
+							</div>
+							{% if error_processing_status %}
+							<div class="text-danger">{{ error_processing_status }}</div>
+							{% endif %} 
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label" for="input-status">
+							<span data-toggle="tooltip" title="{{ help_status }}">{{ entry_status }}</span>
+						</label>
+						<div class="col-sm-10">
+							<input type="checkbox" value="1" name="module_real_time_notification_status" data-toggle="toggle" data-on="{{ text_enabled }}" data-off="{{ text_disabled }}" {% if module_real_time_notification_status %}checked{% endif %}>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+{{ footer }}
