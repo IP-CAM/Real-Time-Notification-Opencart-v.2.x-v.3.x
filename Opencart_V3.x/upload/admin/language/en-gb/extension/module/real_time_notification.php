@@ -39,3 +39,9 @@ $_['help_status']		= 'Module Status';
 // Error
 $_['error_permission']	= 'Warning: You do not have permission to modify Real Time Notification module!';
 $_['error_delay']		= 'Please enter valid delay time in milliseconds. It must be between 500 and 10000!';
+
+
+$_['text_need_support']		= 'Need Support';
+$_['support_email']			= 'mailto:rahulverma00008@gmail.com';
+$_['button_save_and_stay']	= 'Save & Stay';
+$_['button_save_and_exit']	= 'Save & Exit';

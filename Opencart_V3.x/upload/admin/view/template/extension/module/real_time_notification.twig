@@ -3,8 +3,11 @@
 	<div class="page-header">
 		<div class="container-fluid">
 			<div class="pull-right">
-				<button type="submit" form="form-real-time-notification" data-toggle="tooltip" title="{{ button_save }}" class="btn btn-primary"><i class="fa fa-save"></i></button>
-				<a href="{{ cancel }}" data-toggle="tooltip" title="{{ button_cancel }}" class="btn btn-default"><i class="fa fa-reply"></i></a></div>
+				<a href="{{ support_email }}" data-toggle="tooltip" title="{{ text_need_support }}" class="btn btn-info"><i class="fa fa-support"></i> {{ text_need_support }}</a>
+				<button type="submit" form="form-real-time-notification" data-toggle="tooltip" title="{{ button_save_and_stay }}" class="btn btn-primary" onClick="$('#save_and_stay').val(1);"><i class="fa fa-save"></i> {{ button_save_and_stay }}</button>
+				<button type="submit" form="form-real-time-notification" data-toggle="tooltip" title="{{ button_save_and_exit }}" class="btn btn-primary" onClick="$('#save_and_stay').val(0);"><i class="fa fa-save"></i> {{ button_save_and_exit }}</button>
+				<a href="{{ cancel }}" data-toggle="tooltip" title="{{ button_cancel }}" class="btn btn-default"><i class="fa fa-reply"></i> {{ button_cancel }}</a>
+			</div>
 			<h1>{{ heading_title }}</h1>
 			<ul class="breadcrumb">
 				{% for breadcrumb in breadcrumbs %}
@@ -28,6 +31,7 @@
 			</div>
 			<div class="panel-body">
 				<form action="{{ action }}" method="post" enctype="multipart/form-data" id="form-real-time-notification" class="form-horizontal">
+					<input type="hidden" name="save_and_stay" id="save_and_stay" />
 					<div class="form-group">
 						<label class="col-sm-2 control-label" for="input-position">
 							<span data-toggle="tooltip" title="{{ help_position }}">{{ entry_position }}</span>
