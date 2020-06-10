@@ -23,12 +23,9 @@ class ModelExtensionModuleRealTimeNotification extends Model {
 		}
 		*/
 
-		$success_order_ids = array_merge(
-										$this->config->get('config_processing_status'),
-										$this->config->get('config_complete_status')
-									);
-
+		$success_order_ids = $this->config->get('module_real_time_notification_order_status')? $this->config->get('module_real_time_notification_order_status') : array();
 		$success_order_ids = implode("', '", $success_order_ids);
+		$conditional_clause .= " AND o.order_status_id IN ('" . $success_order_ids . "') ";
 
 		$sql = "SELECT o.order_id, o.firstname, o.lastname, o.payment_city AS city, o.date_added, c.name AS country, z.name AS zone FROM `" . DB_PREFIX . "order` o JOIN `" . DB_PREFIX . "country` c ON c.country_id=o.payment_country_id JOIN `" . DB_PREFIX . "zone`z ON z.zone_id=o.payment_zone_id WHERE o.store_id = '" . (int)$this->config->get('config_store_id') . "' " . $conditional_clause . " ORDER BY o.date_added ASC LIMIT " . (int)$limit;
 		
