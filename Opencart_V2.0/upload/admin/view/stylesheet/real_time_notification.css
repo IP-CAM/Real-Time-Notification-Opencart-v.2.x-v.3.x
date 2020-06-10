@@ -1,0 +1,60 @@
+#form-real-time-notification label {
+  font-weight: 400;
+  margin-bottom: 0px;
+  font-size: 18px;
+}
+#form-real-time-notification .form-control {
+  background: rgba(100, 100, 100, 0.2);
+  border-radius: 0px;
+  box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.8);
+  font-size: 18px;
+  height: 40px;
+  margin-top: 10px;
+}
+.notification-position {
+  background-color: rgb(64, 64, 64);
+  padding: 15px;
+}
+
+.btn-orange {
+  font-size: 28px;
+  min-width: 33.333337%;
+  padding: 20px 12px;
+}
+.notification-position .btn-orange {
+  background-color: rgb(249, 145, 87);
+  border-color: rgb(232, 128, 70);
+  border-radius: 0px;
+  color: rgb(255, 255, 255);
+}
+.notification-position .btn-orange.active {
+  color: rgb(64, 64, 64);
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+}
+.notification-position .btn-orange:hover, .notification-position .btn-orange:focus, .notification-position .btn-orange.focus, .notification-position .btn-orange:active, .notification-position .btn-orange.active, .notification-position .open > .dropdown-toggle.btn-orange {
+  background-color: rgb(249, 145, 87);
+  border-color: rgb(232, 128, 70);
+  outline: none;
+}
+.notification-position .icon-arrow-up-left .fa, .notification-position .icon-arrow-down-right .fa {
+  transform: rotate(-45deg);
+  /* Safari */
+  -webkit-transform: rotate(-45deg);
+  /* Firefox */
+  -moz-transform: rotate(-45deg);
+  /* IE */
+  -ms-transform: rotate(-45deg);
+  /* Opera */
+  -o-transform: rotate(-45deg);
+}
+.notification-position .icon-arrow-up-right .fa, .notification-position .icon-arrow-down-left .fa {
+  transform: rotate(45deg);
+  /* Safari */
+  -webkit-transform: rotate(45deg);
+  /* Firefox */
+  -moz-transform: rotate(45deg);
+  /* IE */
+  -ms-transform: rotate(45deg);
+  /* Opera */
+  -o-transform: rotate(45deg);
+}
