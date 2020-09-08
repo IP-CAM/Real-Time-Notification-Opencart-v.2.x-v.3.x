@@ -1,5 +1,5 @@
 <?php
-class ModelExtensionModuleRealTimeNotification extends Model {
+class ModelModuleRealTimeNotification extends Model {
 
 	public function getRecentSales($latest_order_id = 0, $limit = 10){
 		$recent_sales = array();

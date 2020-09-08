@@ -1,39 +1,6 @@
 <?php
 class ControllerExtensionModuleRealTimeNotification extends Controller {
 
-	private static $interval = 5000; // in miliseconds
-
-	public function index() {
-		if ($this->config->get('module_real_time_notification_status')) {
-
-			$this->document->addScript('catalog/view/javascript/bootstrap-notify/bootstrap-notify.min.js');
-			$this->document->addStyle('catalog/view/theme/default/stylesheet/real_time_notification.css');
-
-			// ajax refresh rate
-			$data['module_real_time_notification_interval'] = self::$interval;
-
-			// position
-			$data['module_real_time_notification_position'] = $this->config->get('module_real_time_notification_position')? $this->config->get('module_real_time_notification_position') : 'bottom-right';
-
-			// allow user to dismiss notification before auto hiding
-			$data['module_real_time_notification_allow_dismiss'] = $this->config->get('module_real_time_notification_allow_dismiss')? $this->config->get('module_real_time_notification_allow_dismiss') : false;
-
-			// pause on hover
-			$data['module_real_time_notification_pause_on_hover'] = $this->config->get('module_real_time_notification_pause_on_hover')? true : false;
-
-			// notification delay for hiding
-			$data['module_real_time_notification_delay'] = $this->config->get('module_real_time_notification_delay')? $this->config->get('module_real_time_notification_delay') : self::$interval;
-
-			// keep newest on top
-			$data['module_real_time_notification_newest_on_top'] = $this->config->get('module_real_time_notification_newest_on_top')? $this->config->get('module_real_time_notification_newest_on_top') : true;
-
-			// progress bar
-			$data['module_real_time_notification_progress_bar'] = $this->config->get('module_real_time_notification_progress_bar')? $this->config->get('module_real_time_notification_progress_bar') : true;
-
-			return $this->load->view('extension/module/real_time_notification', $data);
-		}
-	}
-
 	public function notification() {
 		
 		if ($this->config->get('module_real_time_notification_status')) {
